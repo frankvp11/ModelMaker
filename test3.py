@@ -5,7 +5,7 @@ from graphicsSVG2.Triangle import Triangle
 from graphicsSVG2.NGon import NGon
 from graphicsSVG2.CustomPolygon import CustomPolygon
 from graphicsSVG2.roundedRect import RoundedRect
-
+from graphicsSVG2.Oval import Oval
 
 
 # Create shapes
@@ -21,9 +21,10 @@ from graphicsSVG2.roundedRect import RoundedRect
 #     [75, 125],
 # ]
 # custom_polygon = CustomPolygon(custom_vertices, "red")
-custom_polygon =  RoundedRect(50, 50, 200, 100, 40, color='green')
+custom_polygon =  Oval(0, 0, 100, 50, color='blue')
+
 custom_polygon.scale(0.5)
-custom_polygon.move(50, 0   )
+custom_polygon.move(50, 50   )
 from nicegui import ui
 
 
