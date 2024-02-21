@@ -4,7 +4,7 @@ from graphicsSVG2.Rectangle import Rectangle
 from graphicsSVG2.Triangle import Triangle
 from graphicsSVG2.NGon import NGon
 from graphicsSVG2.CustomPolygon import CustomPolygon
-
+from graphicsSVG2.roundedRect import RoundedRect
 
 
 
@@ -14,16 +14,16 @@ from graphicsSVG2.CustomPolygon import CustomPolygon
 # rectangle = Rectangle(100, 100, 100, 80, 'green')
 # ngon = NGon(100, 100, 50, 6, color='black')
 
-custom_vertices = [
-    [50, 50],
-    [100, 50],
-    [100, 100],
-    [75, 125],
-    [25, 100]
-]
-custom_polygon = CustomPolygon(custom_vertices, "red")
-
-
+# custom_vertices = [
+#     [50, 50],
+#     [100, 50],
+#     [100, 100],
+#     [75, 125],
+# ]
+# custom_polygon = CustomPolygon(custom_vertices, "red")
+custom_polygon =  RoundedRect(50, 50, 200, 100, 40, color='green')
+custom_polygon.scale(0.5)
+custom_polygon.move(50, 0   )
 from nicegui import ui
 
 
@@ -63,5 +63,4 @@ image.content = "".join(main_str)
 
 
 
-print(math.radians(-60))
 ui.run()
