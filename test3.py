@@ -6,7 +6,7 @@ from graphicsSVG2.NGon import NGon
 from graphicsSVG2.CustomPolygon import CustomPolygon
 from graphicsSVG2.roundedRect import RoundedRect
 from graphicsSVG2.Oval import Oval
-
+from graphicsSVG2.Wedge import Wedge
 
 # Create shapes
 # circle = Circle(100, 100, 50, 'red')
@@ -21,10 +21,13 @@ from graphicsSVG2.Oval import Oval
 #     [75, 125],
 # ]
 # custom_polygon = CustomPolygon(custom_vertices, "red")
-custom_polygon =  Oval(0, 0, 100, 50, color='blue')
+
+# custom_polygon =  Oval(0, 0, 100, 50, color='blue')
+custom_polygon = Wedge(0, 0, 100, math.pi / 4, 8 * math.pi / 4, color='green')
+
 
 custom_polygon.scale(0.5)
-custom_polygon.move(50, 50   )
+custom_polygon.move(100, 100   )
 from nicegui import ui
 
 
