@@ -5,6 +5,8 @@ class Polygon:
     def __init__(self, vertices, color='black'):
         self.vertices = vertices
         self.color = color
+        self.stroke_outline = color
+        self.stroke_thickness = 0
 
     def move(self, dx, dy):
         for i in range(len(self.vertices)):
@@ -75,4 +77,11 @@ class Polygon:
 
     def to_svg(self):
         points_str = " ".join([f"{x},{y}" for x, y in self.vertices])
-        return f'<polygon points="{points_str}" fill="{self.color}" />'
+        return f'<polygon points="{points_str}" fill="{self.color}" stroke="{self.stroke_outline}" stroke-width="{self.stroke_thickness}"/>'
+
+    def give_outline(self, color, thickness):
+        self.stroke_outline = color
+        self.stroke_thickness = thickness
+        # Generate lines between consecutive vertices to form the outline
+        
+

@@ -28,6 +28,7 @@ custom_polygon = Wedge(0, 0, 100, math.pi / 4, 8 * math.pi / 4, color='green')
 
 custom_polygon.scale(0.5)
 custom_polygon.move(100, 100   )
+custom_polygon.give_outline("black", 5)
 from nicegui import ui
 
 
