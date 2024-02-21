@@ -1,0 +1,4 @@
+/testingstuff/*
+/__pycache__/*
+/graphicsSVG2/__pycache__/*
+/.vscode/*
