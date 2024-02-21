@@ -20,35 +20,35 @@ class Polygon:
 
 
     def move(self, dx, dy):
-        self.translate_x = dx
-        self.translate_y = dy
+        self.translate_x += dx
+        self.translate_y += dy
 
     def rotate(self, angle, x=0, y=0):
-        self.rotate_angle = angle
-        self.rotate_x = x
-        self.rotate_y = y
+        self.rotate_angle += angle
+        self.rotate_x += x
+        self.rotate_y += y
 
 
 
 
     def scale_x(self, factor):
-        self.x_scale_factor = factor
+        self.x_scale_factor += factor
 
     def scale_y(self, factor):
-        self.y_scale_factor = factor
+        self.y_scale_factor += factor
 
     def scale(self, factor):
-        self.x_scale_factor = factor
-        self.y_scale_factor = factor
+        self.x_scale_factor += factor
+        self.y_scale_factor += factor
 
     def set_color(self, color):
         self.color = color
 
     def skewX(self, factor):
-        self.x_skew_factor = factor
+        self.x_skew_factor += factor
 
     def skewY(self, factor):
-        self.y_skew_factor = factor
+        self.y_skew_factor += factor
 
     def to_svg(self): # 
         points_str = " ".join([f"{x},{y}" for x, y in self.vertices])
