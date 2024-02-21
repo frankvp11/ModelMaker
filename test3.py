@@ -35,47 +35,41 @@ app.add_static_file(local_file="testingstuff/shapes.svg", url_path="testingstuff
 
 
 # custom_polygon = Wedge(0, 0, 100, math.pi / 4, 8 * math.pi / 4, color='green')
-custom_polygon =  Text("Hello, World!", 5, 20)
-
-
-custom_polygon.scale(2)
+# custom_polygon =  Text("Hello, World!", 5, 20)
+custom_polygon = Rectangle(0,0, 100, 80, 'green')
+custom_polygon.move(100, 100)
+custom_polygon.scale(0.5)
+# custom_polygon.rotate(45, 100, 100)
+# custom_polygon.skewX()
 # custom_polygon.move(100, 100   )
-# custom_polygon.give_outline("black", 5)
+custom_polygon.give_outline("black", 5)
+
+
+class SVGContent():
+    def __init__(self) -> None:
+        self.content = ""
 
 
 image = ui.interactive_image(source="testingstuff/shapes.svg")
 
 # main_str = [circle.to_svg(), triangle.to_svg(), rectangle.to_svg(), ngon.to_svg()]
 main_str = [custom_polygon.to_svg()]
+svgcontent = SVGContent()
+svgcontent.content = "".join(main_str)
+
 # group_object = ShapeCollection([custom_polygon, custom_polygon2])
 # group_object.scale_all(0.5)
 # group_object.move_all(50, 10)
 
-image.content = "".join(main_str)
 
+image.bind_content_from(svgcontent, 'content')
+# image.content = main_str    
 
-# def update_triangle(e):
-#     triangle.rotate(-60)
-#     main_str[1] = triangle.to_svg()
-#     image.content = "".join(main_str)
+def update_triangle(e):
+    custom_polygon.rotate(45, 100, 100)
+    svgcontent.content = custom_polygon.to_svg()
 
-
-# def update_rectangle(e):
-#     rectangle.rotate_shape(60)
-#     rectangle.set_color("lightblue")
-#     main_str[2] = rectangle.to_svg()
-#     image.content = "".join(main_str)
-
-
-# def update_circle(e):
-#     circle.scale(2)
-#     main_str[0] = circle.to_svg()
-#     image.content = "".join(main_str)
-
-
-# ui.button("Click me", on_click=lambda e : update_triangle(e))
-# ui.button("Click me 2", on_click=lambda e : update_rectangle(e))
-# ui.button("Click me 3", on_click=lambda e: update_circle(e))
+ui.button("Click me", on_click=lambda e : update_triangle(e))
 
 
 
