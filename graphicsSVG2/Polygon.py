@@ -83,5 +83,5 @@ class Polygon:
         self.stroke_outline = color
         self.stroke_thickness = thickness
         # Generate lines between consecutive vertices to form the outline
-        
+            
 
