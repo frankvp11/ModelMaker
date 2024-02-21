@@ -36,7 +36,7 @@ text = Text("hello frank!", 100, 100, "green", bold=True)
 
 transformation_options = ['rotate', "move", "scaleX", "scaleY", "set_color", "skewX", "skewY", "give_outline"]
 option_selections = ['circle', 'triangle', 'rectangle', 'ngon', 'custom_polygon', 'oval', 'wedge', 'roundedrect', 'text' ]
-app.add_static_file(local_file="testingstuff/shapes.svg", url_path="testingstuff/shapes.svg")
+app.add_static_file(local_file="shapes.svg", url_path="shapes.svg")
 
 
 
@@ -114,7 +114,7 @@ main_str = circle.to_svg()
 svgcontent = SVGContent()
 svgcontent.content = main_str
 
-image = ui.interactive_image(source="testingstuff/shapes.svg")
+image = ui.interactive_image(source="shapes.svg")
 image.bind_content_from(svgcontent, 'content')
 
 
