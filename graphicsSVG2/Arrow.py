@@ -6,7 +6,6 @@ from .ShapeCollection import ShapeCollection
 
 class Arrow(ShapeCollection):
     def __init__(self, x1, y1, x2, y2, color='black', thickness=1, head_length=10, head_width=5):
-        self.color = color
         self.thickness = thickness
         self.head_length = head_length
         self.head_width = head_width
