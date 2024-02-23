@@ -3,17 +3,16 @@ import math
 
 
 class Oval(Polygon):
-    def __init__(self, cx, cy, rx, ry, num_segments=30, color='black'):
-        vertices = self._generate_oval_vertices(cx, cy, rx, ry, num_segments)
-        super().__init__(vertices, color=color)
+    def __init__(self, cx, cy, rx, ry, **kwargs):
+        self.cx = cx
+        self.cy = cy
+        self.rx = rx  # x-radius
+        self.ry = ry  # y-radius
+        super().__init__(**kwargs)
 
-    def _generate_oval_vertices(self, cx, cy, rx, ry, num_segments):
-        vertices = []
-        angle_step = 2 * math.pi / num_segments
-        for i in range(num_segments):
-            angle = i * angle_step
-            x = cx + rx * math.cos(angle)
-            y = cy + ry * math.sin(angle)
-            vertices.append([x, y])
-        return vertices
+    def to_svg(self):
+        transforms = f'transform="scale({self.x_scale_factor}, {self.y_scale_factor}) rotate({self.rotate_angle},{self.rotate_x},{self.rotate_y}) translate({self.translate_x}, {self.translate_y}) skewX({self.x_skew_factor}) skewY({self.y_skew_factor})"'
+        outlines = f'stroke="{self.stroke_outline}" stroke-width="{self.stroke_thickness}"'
+        svg_code = f'<ellipse {transforms} {outlines} cx="{self.cx}" cy="{self.cy}" rx="{self.rx}" ry="{self.ry}" />'
+        return svg_code
     

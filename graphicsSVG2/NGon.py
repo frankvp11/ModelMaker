@@ -3,9 +3,9 @@ from .Polygon import Polygon
 import math
 
 class NGon(Polygon):
-    def __init__(self, cx, cy, r, n, color='black'):
+    def __init__(self, cx, cy, r, n, **kwargs):
         vertices = self._generate_ngon_vertices(cx, cy, r, n)
-        super().__init__(vertices, color=color)
+        super().__init__(vertices=vertices, **kwargs)
 
     def _generate_ngon_vertices(self, cx, cy, r, n):
         vertices = []

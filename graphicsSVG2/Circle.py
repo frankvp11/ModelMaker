@@ -5,19 +5,17 @@ import math
 
 
 class Circle(Polygon):
-    def __init__(self, cx, cy, r, color='black'):
+    def __init__(self, cx, cy, r, color='black', **kwargs):
         self.cx = cx
         self.cy = cy
         self.r = r
-        vertices = self._generate_circle_vertices(cx, cy, r)
-        super().__init__(vertices, color=color)
+        super().__init__(color=color, **kwargs)
 
-    def _generate_circle_vertices(self, cx, cy, r, num_points=30):
-        vertices = []
-        for i in range(num_points):
-            angle = 2 * math.pi * i / num_points
-            x = cx + r * math.cos(angle)
-            y = cy + r * math.sin(angle)
-            vertices.append([x, y])
-        return vertices
+
+    def to_svg(self):
+        transforms = f'transform="scale({self.x_scale_factor}, {self.y_scale_factor}) rotate({self.rotate_angle},{self.rotate_x},{self.rotate_y}) translate({self.translate_x}, {self.translate_y}) skewX({self.x_skew_factor}) skewY({self.y_skew_factor})"'
+        outlines = f'stroke="{self.stroke_outline}" stroke-width="{self.stroke_thickness}"'
+        svg_code = f'<circle  {transforms}  cx="{self.cx}" cy="{self.cy}" r="{self.r}" fill="{self.color}" stroke="{self.stroke_outline}" {outlines} />'
+        return svg_code
+
 

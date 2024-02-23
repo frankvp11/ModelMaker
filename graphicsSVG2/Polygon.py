@@ -2,8 +2,8 @@
 import math
 
 class Polygon:
-    def __init__(self, vertices, color='black', **kwargs):
-        self.vertices = vertices
+    def __init__(self, color='black', **kwargs):
+        self.vertices = kwargs.get('vertices', [])
         self.color = color
         self.stroke_outline = color
         self.stroke_thickness = kwargs.get('stroke_thickness', 1)
@@ -52,12 +52,13 @@ class Polygon:
 
     def to_svg(self): # 
         points_str = " ".join([f"{x},{y}" for x, y in self.vertices])
-        poly_str = f'<polygon transform="scale({self.x_scale_factor}, {self.y_scale_factor}) rotate({self.rotate_angle},{self.rotate_x},{self.rotate_y}) translate({self.translate_x}, {self.translate_y}) skewX({self.x_skew_factor}) skewY({self.y_skew_factor})" points="{points_str}" fill="{self.color}" stroke="{self.stroke_outline}" stroke-width="{self.stroke_thickness}"/>'
+        transforms = f'transform="scale({self.x_scale_factor}, {self.y_scale_factor}) rotate({self.rotate_angle},{self.rotate_x},{self.rotate_y}) translate({self.translate_x}, {self.translate_y}) skewX({self.x_skew_factor}) skewY({self.y_skew_factor})"'
+        outlines = f'stroke="{self.stroke_outline}" stroke-width="{self.stroke_thickness}"'
+        poly_str = f'<polygon {transforms} {outlines} points="{points_str}" fill="{self.color}" stroke="{self.stroke_outline}" stroke-width="{self.stroke_thickness}"/>'
         return poly_str
     
     def give_outline(self, color, thickness):
         self.stroke_outline = color
         self.stroke_thickness = thickness
-        # Generate lines between consecutive vertices to form the outline
 
 

@@ -1,6 +1,5 @@
 
 from graphicsSVG2.Rectangle import Rectangle
-
 from nicegui import ui
 
 import time
@@ -13,7 +12,7 @@ for i in range(1000):
 
 stop1 = time.time()
 
-image = ui.interactive_image(source="testingstuff/shapes.svg")
+image = ui.interactive_image(source="shapes.svg")
 image.content = "".join(elements)
 
 

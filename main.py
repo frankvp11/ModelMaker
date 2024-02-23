@@ -24,16 +24,16 @@ custom_vertices = [
     [50, 100],
 ]
 
-circle = Circle(100, 100, 50, 'green')
-triangle = Triangle(50, 50, 150, 50, 100, 150, 'green')
-rectangle = Rectangle(100, 100, 100, 80, 'green')
-ngon = NGon(100, 100, 50, 6, color='green')
-custom_polygon = CustomPolygon(custom_vertices, "green")
-oval =  Oval(100, 100, 100, 50, color='green')
-wedge = Wedge(100, 100, 100, math.pi / 4, 8 * math.pi / 4, color='green')
-roundedrect = RoundedRect(100, 100, 100, 80, 20, 'green')
-text = Text("hello frank!", 100, 100, "green", bold=True)
-line = Line(0, 0, 100, 100, color='green')
+circle = Circle(100, 100, 50, 'green') # Good
+triangle = Triangle(50, 50, 150, 50, 100, 150, color='green') #good
+rectangle = Rectangle(100, 100, 100, 80, color='green') # Good
+ngon = NGon(100, 100, 50, 6, color='green') # Good
+custom_polygon = CustomPolygon(custom_vertices, color="green") # Good
+oval =  Oval(100, 100, 100, 50, color='green') # Good
+wedge = Wedge(100, 100, 100, 0, 50 * math.pi, color='green') # Bad
+roundedrect = RoundedRect(100, 100, 100, 80, 20, 10, color='green') #good
+text = Text("hello frank!", 100, 100, "green", bold=True)  # good
+line = Line(0, 0, 100, 100, color='green') # good
 
 transformation_options = ['rotate', "move", "scaleX", "scaleY", "set_color", "skewX", "skewY", "give_outline"]
 option_selections = ['circle', 'triangle', 'rectangle', 'ngon', 'custom_polygon', 'oval', 'wedge', 'roundedrect', 'text', 'line' ]
