@@ -23,9 +23,7 @@ class ShapeCollection:
     def remove_polygon(self, polygon):
         self.polygons.remove(polygon)
 
-    def run_method(self, polygon, method, *args):
-        getattr(polygon, method)(*args)
-        
+
     def to_svg(self):
         return "".join([polygon.to_svg() for polygon in self.polygons])
 
