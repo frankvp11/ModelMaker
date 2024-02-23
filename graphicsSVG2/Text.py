@@ -1,17 +1,21 @@
 class Text:
-    def __init__(self, text, x, y, color='black', font_size=12, bold =  False, italics = False, underline= False, strikethrough=False, selectable=False):
+    def __init__(self, text, x, y, **kwargs):
         self.text = text
         self.x = x
         self.y = y
-        self.color = color
-        self.font_size = font_size
-        self.bold = bold
-        self.italics = italics
-        self.underline = underline
-        self.strikethrough = strikethrough
-        self.selectable = selectable
+        self.color =    kwargs.get('color', 'black')
+        self.font_size = kwargs.get('font_size', 12)
+        self.bold = kwargs.get('bold', False)
+        self.italics = kwargs.get('italics', False)
+        self.underline = kwargs.get('underline', False)
+        self.strikethrough = kwargs.get('strikethrough', False)
+        self.selectable =  kwargs.get('selectable', False)
         self.x_scale_factor = 1
         self.y_scale_factor = 1
+        self.transparency = kwargs.get('transparency', 1)
+
+    def update_transparency(self, transparency):
+        self.transparency = transparency
 
     def move(self, dx, dy):
         self.x += dx
@@ -58,7 +62,5 @@ class Text:
             style += "text-decoration: line-through; "
         if self.selectable:
             style += "user-select: auto; "
-        print(self.x_scale_factor)
-        print(self.y_scale_factor)
-        svg_text = f'<text transform="scale({self.x_scale_factor}, {self.y_scale_factor})" x="{self.x}" y="{self.y}" fill="{self.color}" font-size="{self.font_size}" style="{style}">{self.text}</text>'
+        svg_text = f'<text transform="scale({self.x_scale_factor}, {self.y_scale_factor})" x="{self.x}" y="{self.y}" fill="{self.color}" fill-opacity="{self.transparency}" font-size="{self.font_size}" style="{style}">{self.text}</text>'
         return svg_text

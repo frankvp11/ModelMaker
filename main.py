@@ -32,10 +32,10 @@ custom_polygon = CustomPolygon(custom_vertices, color="green") # Good
 oval =  Oval(100, 100, 100, 50, color='green') # Good
 wedge = Wedge(100, 100, 100, 0, 359, color='green') # Bad
 roundedrect = RoundedRect(100, 100, 100, 80, 20, 10, color='green') #good
-text = Text("hello frank!", 100, 100, "green", bold=True)  # good
+text = Text("hello frank!", 100, 100, color="green", bold=True)  # good
 line = Line(0, 0, 100, 100, color='green') # good
 
-transformation_options = ['rotate', "move", "scaleX", "scaleY", "set_color", "skewX", "skewY", "give_outline"]
+transformation_options = ['rotate', "move", "scaleX", "scaleY", "set_color", "skewX", "skewY", "give_outline", 'transparency']
 option_selections = ['circle', 'triangle', 'rectangle', 'ngon', 'custom_polygon', 'oval', 'wedge', 'roundedrect', 'text', 'line' ]
 app.add_static_file(local_file="shapes.svg", url_path="shapes.svg")
 
@@ -77,6 +77,8 @@ class SVGContent():
             self.shape.skewY(2)
         elif self.transformation == "give_outline":
             self.shape.give_outline("black", 5)
+        elif self.transformation == "transparency":
+            self.shape.update_transparency(0.5)
 
 
         self.content = self.shape.to_svg()

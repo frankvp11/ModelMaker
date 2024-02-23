@@ -9,6 +9,7 @@ class Polygon:
         self.stroke_thickness = kwargs.get('stroke_thickness', 1)
         self.x_scale_factor = kwargs.get('x_scale_factor', 1)
         self.y_scale_factor = kwargs.get('y_scale_factor', 1)
+        self.transparency = kwargs.get('transparency', 1)
         self.translate_x = 0
         self.translate_y = 0
         self.rotate_x = 0
@@ -16,7 +17,6 @@ class Polygon:
         self.rotate_angle = 0
         self.x_skew_factor = 0
         self.y_skew_factor = 0
-
 
 
     def move(self, dx, dy):
@@ -29,6 +29,8 @@ class Polygon:
         self.rotate_y += y
 
 
+    def update_transparency(self, transparency):
+        self.transparency = transparency
 
 
     def scale_x(self, factor):
@@ -51,10 +53,11 @@ class Polygon:
         self.y_skew_factor += factor
 
     def to_svg(self): # 
+
         points_str = " ".join([f"{x},{y}" for x, y in self.vertices])
         transforms = f'transform="scale({self.x_scale_factor}, {self.y_scale_factor}) rotate({self.rotate_angle},{self.rotate_x},{self.rotate_y}) translate({self.translate_x}, {self.translate_y}) skewX({self.x_skew_factor}) skewY({self.y_skew_factor})"'
         outlines = f'stroke="{self.stroke_outline}" stroke-width="{self.stroke_thickness}"'
-        poly_str = f'<polygon {transforms} {outlines} points="{points_str}" fill="{self.color}" stroke="{self.stroke_outline}" stroke-width="{self.stroke_thickness}"/>'
+        poly_str = f'<polygon {transforms} {outlines} points="{points_str}" fill="{self.color}" fill-opacity="{self.transparency}" stroke="{self.stroke_outline}" stroke-width="{self.stroke_thickness}"/>'
         return poly_str
     
     def give_outline(self, color, thickness):
