@@ -8,10 +8,9 @@ start = time.time()
 
 elements = []
 for i in range(1000):
-    elements.append(Rectangle(i, 0, 1, 1, "green").to_svg())
+    elements.append(Rectangle(i, 0, 1, 1, color="green").to_svg())
 
 stop1 = time.time()
-
 image = ui.interactive_image(source="shapes.svg")
 image.content = "".join(elements)
 

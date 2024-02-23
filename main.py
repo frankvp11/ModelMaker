@@ -14,6 +14,7 @@ from graphicsSVG2.Wedge import Wedge
 from graphicsSVG2.ShapeCollection import ShapeCollection
 from graphicsSVG2.Text import Text
 from graphicsSVG2.Line import Line
+from graphicsSVG2.Arrow import Arrow
 # Create shapes
 
 
@@ -34,9 +35,10 @@ wedge = Wedge(100, 100, 100, 0, 359, color='green') # Bad
 roundedrect = RoundedRect(100, 100, 100, 80, 20, 10, color='green') #good
 text = Text("hello frank!", 100, 100, color="green", bold=True)  # good
 line = Line(0, 0, 100, 100, color='green') # good
+arrow = Arrow(100, 100, 200, 100, color='green') # good
 
 transformation_options = ['rotate', "move", "scaleX", "scaleY", "set_color", "skewX", "skewY", "give_outline", 'transparency']
-option_selections = ['circle', 'triangle', 'rectangle', 'ngon', 'custom_polygon', 'oval', 'wedge', 'roundedrect', 'text', 'line' ]
+option_selections = ['circle', 'triangle', 'rectangle', 'ngon', 'custom_polygon', 'oval', 'wedge', 'roundedrect', 'text', 'line', 'arrow']
 app.add_static_file(local_file="shapes.svg", url_path="shapes.svg")
 
 
@@ -114,7 +116,9 @@ class SVGContent():
         elif e.value == "line":
             self.content = line.to_svg()
             self.shape = line
-
+        elif e.value == "arrow":
+            self.content = arrow.to_svg()
+            self.shape = arrow
 
 main_str = circle.to_svg()
 svgcontent = SVGContent()
