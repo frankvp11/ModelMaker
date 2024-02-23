@@ -20,7 +20,8 @@ class ShapeCollection:
     def rotate_all(self, angle, x=0, y=0):
         for polygon in self.polygons:
             polygon.rotate(angle, x, y)
-            
+    def remove_polygon(self, polygon):
+        self.polygons.remove(polygon)
 
     def to_svg(self):
         return "".join([polygon.to_svg() for polygon in self.polygons])
