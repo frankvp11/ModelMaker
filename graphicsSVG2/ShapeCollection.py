@@ -17,6 +17,10 @@ class ShapeCollection:
         for polygon in self.polygons:
             polygon.scale(amount)
             
+    def rotate_all(self, angle, x=0, y=0):
+        for polygon in self.polygons:
+            polygon.rotate(angle, x, y)
+            
 
     def to_svg(self):
         return "".join([polygon.to_svg() for polygon in self.polygons])
