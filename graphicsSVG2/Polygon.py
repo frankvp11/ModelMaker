@@ -2,13 +2,13 @@
 import math
 
 class Polygon:
-    def __init__(self, vertices, color='black'):
+    def __init__(self, vertices, color='black', **kwargs):
         self.vertices = vertices
         self.color = color
         self.stroke_outline = color
-        self.stroke_thickness = 0
-        self.x_scale_factor = 1
-        self.y_scale_factor = 1
+        self.stroke_thickness = kwargs.get('stroke_thickness', 1)
+        self.x_scale_factor = kwargs.get('x_scale_factor', 1)
+        self.y_scale_factor = kwargs.get('y_scale_factor', 1)
         self.translate_x = 0
         self.translate_y = 0
         self.rotate_x = 0
