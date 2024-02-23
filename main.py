@@ -30,7 +30,7 @@ rectangle = Rectangle(100, 100, 100, 80, color='green') # Good
 ngon = NGon(100, 100, 50, 6, color='green') # Good
 custom_polygon = CustomPolygon(custom_vertices, color="green") # Good
 oval =  Oval(100, 100, 100, 50, color='green') # Good
-wedge = Wedge(100, 100, 100, 0, 50 * math.pi, color='green') # Bad
+wedge = Wedge(100, 100, 100, 0, 359, color='green') # Bad
 roundedrect = RoundedRect(100, 100, 100, 80, 20, 10, color='green') #good
 text = Text("hello frank!", 100, 100, "green", bold=True)  # good
 line = Line(0, 0, 100, 100, color='green') # good
