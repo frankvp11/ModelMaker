@@ -22,6 +22,9 @@ class ShapeCollection:
             polygon.rotate(angle, x, y)
     def remove_polygon(self, polygon):
         self.polygons.remove(polygon)
+    
+    def clear_all_polygons(self):
+        self.polygons = []
 
 
     def to_svg(self):
