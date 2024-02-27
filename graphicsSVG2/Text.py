@@ -49,6 +49,9 @@ class Text:
 
     def set_selectable(self, selectable):
         self.selectable = selectable
+        
+    def set_color(self, color): 
+        self.color = color
 
     def to_svg(self):
         style = ""
