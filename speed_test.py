@@ -18,14 +18,25 @@ import time
 
 
 def handle(event, shape):
-    print("Hi there")
-    print(event)
-    print("Clicked on shape: ", shape)
+    if event.type == "mousemove":
+        print("Mouse moved over shape")
+    elif event.type == "click":
+        print("Shape clicked")
+    elif event.type == "mouseenter":
+        print("Mouse entered shape")
+    elif event.type == "mouseleave":
+        print("Mouse left shape")
+    elif event.type == "mousedown":
+        print("Mouse down on shape")
+    elif event.type == "mouseup":
+        print("Mouse up on shape")
+    
+        
 
 
 
 
-circle = Wedge(100, 100, 50, 0, 180, color="red", event_handler=handle)
+circle = Circle(100, 100, 50, color='red', event_handler=handle)
 circle.scale(0.5)
 circle.move(50, 50)
 

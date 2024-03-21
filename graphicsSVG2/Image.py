@@ -9,7 +9,7 @@ class Image:
         self.image_url = image_url
         self.shapes = ShapeCollection(shapes)
         self.content = self.shapes.to_svg()
-        self.image = ui.interactive_image(image_url, on_mouse=self.emit_events)
+        self.image = ui.interactive_image(image_url, on_mouse=self.emit_events, events=['click', 'mousemove', 'mousedown', 'mouseup', 'mouseenter', 'mouseleave'])
         self.image.bind_content_from(self, 'content')
     
 
