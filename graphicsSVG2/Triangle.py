@@ -9,7 +9,8 @@ class Triangle(Polygon):
         self.y2 = y2
         self.x3 = x3
         self.y3 = y3
-        super().__init__(**kwargs)
+        vertices =[[x1, y1], [x2, y2], [x3, y3]]
+        super().__init__(vertices=vertices, **kwargs)
 
     def to_svg(self):
         transforms = f'transform="scale({self.x_scale_factor}, {self.y_scale_factor}) rotate({self.rotate_angle},{self.rotate_x},{self.rotate_y}) translate({self.translate_x}, {self.translate_y}) skewX({self.x_skew_factor}) skewY({self.y_skew_factor})"'

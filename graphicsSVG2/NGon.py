@@ -13,6 +13,7 @@ class NGon(Polygon):
             angle = 2 * math.pi * i / n
             x = cx + r * math.cos(angle)
             y = cy + r * math.sin(angle)
-            vertices.append([x, y])
+            vertices.append([x,y])
+        
         return vertices
     

@@ -15,6 +15,11 @@ class CubicBezierCurve:
         n = 3
         return comb(n, i) * (1 - t) ** (n - i) * t ** i * p
 
+
+    def emit_events(self, event):
+        # TODO: Implement this method
+        pass
+
     def to_svg(self, num_segments=100):
         step = 1 / num_segments
         path_data = 'M ' + ' '.join(map(str, self.points[0])) + ' C '

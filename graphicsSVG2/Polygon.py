@@ -15,8 +15,28 @@ class Polygon:
         self.rotate_x = 0
         self.rotate_y = 0 
         self.rotate_angle = 0
-        self.x_skew_factor = 0
-        self.y_skew_factor = 0
+        self.x_skew_factor = 1
+        self.y_skew_factor = 1
+        self.event_handler = kwargs.get('event_handler', None)
+    
+    def is_point_inside_polygon(self, point):
+        x, y = point
+        inside = False
+        for i in range(len(self.vertices)):
+            x1, y1 = self.vertices[i]
+            x2, y2 = self.vertices[(i + 1) % len(self.vertices)]
+            x1, y1 = ((x1 + self.translate_x) * self.x_scale_factor, (y1 + self.translate_y) * self.y_scale_factor)
+            x2, y2 = ((x2 + self.translate_x) * self.x_scale_factor, (y2 + self.translate_y) * self.y_scale_factor)
+
+            if ((y1 <= y < y2) or (y2 <= y < y1)) and (x < (x2 - x1) * (y - y1) / (y2 - y1) + x1):
+                inside = not inside
+        return inside
+
+    def emit_events(self, event):
+        emit_event = self.is_point_inside_polygon((event.image_x, event.image_y))
+        if emit_event and self.event_handler:
+            self.event_handler(event, self)
+        
 
 
     def move(self, dx, dy):
@@ -34,23 +54,23 @@ class Polygon:
 
 
     def scale_x(self, factor):
-        self.x_scale_factor += factor
+        self.x_scale_factor *= factor
 
     def scale_y(self, factor):
-        self.y_scale_factor += factor
+        self.y_scale_factor *= factor
 
     def scale(self, factor):
-        self.x_scale_factor += factor
-        self.y_scale_factor += factor
+        self.x_scale_factor *= factor
+        self.y_scale_factor *= factor
 
     def set_color(self, color):
         self.color = color
 
     def skewX(self, factor):
-        self.x_skew_factor += factor
+        self.x_skew_factor *= factor
 
     def skewY(self, factor):
-        self.y_skew_factor += factor
+        self.y_skew_factor *= factor
 
     def to_svg(self): # 
 

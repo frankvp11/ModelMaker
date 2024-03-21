@@ -13,6 +13,7 @@ class Text:
         self.x_scale_factor = 1
         self.y_scale_factor = 1
         self.transparency = kwargs.get('transparency', 1)
+        self.event_handler = kwargs.get('event_handler', None)
 
     def update_transparency(self, transparency):
         self.transparency = transparency
@@ -52,6 +53,7 @@ class Text:
         
     def set_color(self, color): 
         self.color = color
+    
 
     def to_svg(self):
         style = ""

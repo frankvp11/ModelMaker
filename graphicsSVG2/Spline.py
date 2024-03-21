@@ -43,5 +43,9 @@ class Spline:
     def set_color(self, color):
         self.color = color
 
+    def emit_events(self, event):
+        # TODO: Implement this method
+        pass
+
     def to_svg(self):
         return f'<path d="M {self.x0} {self.y0} Q {self.x1} {self.y1} {self.x2} {self.y2}" stroke="{self.color}" stroke-width="{self.thickness}" fill="none" />'

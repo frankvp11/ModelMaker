@@ -1,23 +1,49 @@
-
+from graphicsSVG2.Arrow import Arrow
+from graphicsSVG2.CustomPolygon import CustomPolygon
+from graphicsSVG2.Image import Image
 from graphicsSVG2.Rectangle import Rectangle
+from graphicsSVG2.Circle import Circle
+from graphicsSVG2.Triangle import Triangle
+from graphicsSVG2.Line import Line
+from graphicsSVG2.NGon import NGon
+from graphicsSVG2.Oval import Oval
+from graphicsSVG2.roundedRect import RoundedRect
+from graphicsSVG2.Text import Text
+from graphicsSVG2.Wedge import Wedge
+
+
 from nicegui import ui
 
 import time
 
-start = time.time()
 
-elements = []
-for i in range(1000):
-    elements.append(Rectangle(i, 0, 1, 1, color="green").to_svg())
-
-stop1 = time.time()
-image = ui.interactive_image(source="shapes.svg")
-image.content = "".join(elements)
+def handle(event, shape):
+    print("Hi there")
+    print(event)
+    print("Clicked on shape: ", shape)
 
 
-stop2 = time.time()
 
-print("Time taken to create all 1000 elements: ", str(stop1-start))
-print("Time taken to render all 1000 elements: ", str(stop2-stop1))
+
+circle = Wedge(100, 100, 50, 0, 180, color="red", event_handler=handle)
+circle.scale(0.5)
+circle.move(50, 50)
+
+
+
+
+
+
+
+
+shapes = [circle]
+
+
+
+image = Image("shapes.svg", shapes)
+
+
+
+
 
 ui.run()
